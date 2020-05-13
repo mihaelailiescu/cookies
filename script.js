@@ -2,19 +2,12 @@
 //apoi in functie de ce valoare ai in cookie, acel button trebuie sa fie pre-selected
 //cand user-ul bifeaza celalalt radio button, atunci trebuie sa apara selectat celelalt buton si cookie sa retina acea valoare 
 
-function createCookie(name, value, days) {
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        var expires = "; expires=" + date.toGMTString();
-    } else {
-        var expires = "";
-    }
-    document.cookie = name + "=" + value + expires + "; path=/";
+function createCookie(name, value) {
+    document.cookie = name + "=" + value;
 }
 
 function eraseCookie(name) {
-    createCookie(name, "", -1);
+    createCookie(name, "");
 }
 
 function getCookie(cname) {
@@ -36,7 +29,7 @@ function getCookie(cname) {
 document.getElementById("en").onclick = function() {
     console.log('en')
     eraseCookie('language');
-    createCookie('language', 1, 1)
+    createCookie('language', 1)
     document.getElementById("en").checked = true;
     document.getElementById("ro").checked = false;
 }
@@ -44,7 +37,7 @@ document.getElementById("en").onclick = function() {
 document.getElementById("ro").onclick = function() {
     console.log('ro')
     eraseCookie('language');
-    createCookie('language', 2, 1)
+    createCookie('language', 2)
     document.getElementById("ro").checked = true;
     document.getElementById("en").checked = false;
 }
